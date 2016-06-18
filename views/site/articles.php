@@ -18,6 +18,7 @@ $this->title = 'Articles';
 
 <?php foreach ($lessons as $lesson): ?>
 <div id="templatemo_main">
+    
     <div id="content">
 <div class="post">
    
