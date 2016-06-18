@@ -13,7 +13,7 @@ $this->title = 'Articles';
 </div>
 <?php  $form = ActiveForm::end(); ?>
 
-
+qwewad 
 <div class="lesson">
 
 <?php foreach ($lessons as $lesson): ?>
