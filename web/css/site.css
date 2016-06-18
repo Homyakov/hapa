@@ -1,0 +1,384 @@
+html,
+body {
+    height: 100%;
+
+    color:#F5EDD3 ;
+
+}
+#com_worn{
+    color: #e51717;
+}
+
+a.title {
+    display: inline-block;
+    line-height: 22px;
+    color: #F5EDD3;
+}
+a.title:hover{
+    color: #C94118;
+    text-decoration:none;
+}
+
+/* comment blok */
+#comment_section {
+    clear: both;
+    margin-bottom: 60px;
+    width: 538px;
+}
+.comments {
+    list-style: none;
+}
+.first_level {
+    margin: 0; padding: 0;
+}
+.comments li .comment_box {
+    clear: both;
+    width:100%;
+    padding: 10px 30px 20px 30px;
+    margin-bottom: 40px;
+}
+.comment_box .gravatar {
+    float: left;
+    width: 75px;
+    margin-right: 30px;
+}
+.comment_box .comment_text p {
+    margin: 0;
+}
+
+.comment_text .comment_author {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ba8c00;
+    margin-bottom: 10px;
+}
+.comment_text .date {
+    font-size: 12px;
+    font-weight: normal;
+    color: #7b7b7b;
+    padding-left: 10px;
+}
+
+.comments li .commentbox1 {
+    border: 1px solid #1b1b1b;
+}
+/* Конец блока стилей комментариев */
+
+/* Блок стилей дарк про */
+.post {
+    clear: left;
+    padding-bottom: 40px;
+    margin-bottom: 40px ;
+    background: url(../images/templatemo_divider.png) repeat-x bottom;
+
+}
+.post .meta {
+    font-size: 10px;
+    margin-bottom: 20px;
+}
+.post .meta span {
+    float: left;
+    display: block;
+    margin-right: 20px;
+    padding: 5px 0 5px 30px;
+}
+.post .meta span.admin {
+    background: url(../images/agent.png) no-repeat;
+}
+
+.post .meta span.view {
+    background: url(../images/view.png) no-repeat;
+}
+.post .meta span.date {
+    background: url(../images/calendar.png) no-repeat;
+}
+.post .meta span.tag {
+    background: url(../images/tag.png) no-repeat;
+}
+.post .meta span.comment {
+    background: url(../images/chat.png) no-repeat;
+}
+.cleaner { clear: both }
+.h10 { height: 10px }
+.h20 { height: 20px }
+.h30 { height: 30px }
+.h40 { height: 40px }
+.h50 { height: 50px }
+a.more {
+    display: inline-block;
+    width: 80px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    background-image: url(../images/templatemo_button.png);
+    color: #C94118;
+}
+#templatemo_main {
+    width: 940px;
+    padding: 40px 0;
+    margin: 0 auto;
+}
+
+#content {
+    width: 600px;
+    margin: 0 auto;
+}
+
+/* конец блока */
+
+
+
+
+.wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+    background-color: #000000 ;
+    background-image: url(../images/templatemo_body.jpg);
+    background-repeat: repeat-x;
+}
+
+.wrap > .container {
+    padding: 70px 15px 20px;
+}
+
+.footer {
+    height: 60px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.jumbotron {
+    text-align: center;
+    background-color: transparent;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
+}
+
+a.asc:after {
+    content: /*"\e113"*/ "\e151";
+}
+
+a.desc:after {
+    content: /*"\e114"*/ "\e152";
+}
+
+.sort-numerical a.asc:after {
+    content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+    content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+    content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+    content: "\e156";
+}
+
+.grid-view th {
+    white-space: nowrap;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+
+.account-img{
+    float:left;
+    margin:0px 7px 7px 0;
+    border-radius: 20px;
+
+   overflow: hidden;
+}
+.account-info{
+border: 1px solid #cccccc;
+text-align: left;
+    margin: 0 0 0 110px;
+    border-radius: 20px;
+    padding:5px 15px;
+}
+
+.account-button{
+
+    clear:both;
+    text-align: left;
+
+    padding-left: 110px;
+    font-size: 21px;
+    margin-top: 20px;
+}
+.account-profile{
+    text-align: center;
+    padding: 20px 100px;
+}
+.happy-day{
+    font: inherit;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding:6px;
+    color: #555;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+/*стили строки поиска */
+
+
+/*-------------------------------------*/
+
+.cf:before, .cf:after{
+    content:"";
+    display:table;
+}
+
+.cf:after{
+    clear:both;
+}
+
+.cf{
+    zoom:1;
+}
+
+/*-------------------------------------*/
+
+.form-wrapper {
+    width: 550px;
+    padding: 15px;
+    margin-left:24%;
+    background: #444;
+    background: rgba(0,0,0,.2);
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+    box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+}
+
+.form-wrapper input {
+    width: 380px;
+    height: 20px;
+    margin-top: 10px;
+    padding: 10px 5px;
+    float: left;
+    font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    border: 0;
+    background: #eee;
+    -moz-border-radius: 3px 0 0 3px;
+    -webkit-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
+    color: #0f0f0f;
+}
+
+.form-wrapper input:focus {
+    outline: 0;
+    background: #fff;
+    -moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+    box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+}
+
+.form-wrapper input::-webkit-input-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.form-wrapper input:-moz-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.form-wrapper input:-ms-input-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.form-wrapper button {
+    overflow: visible;
+    position: relative;
+    float: right;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    height: 40px;
+    width: 110px;
+    font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    color: #fff;
+    text-transform: uppercase;
+    background:  #F07400;
+    -moz-border-radius: 0 3px 3px 0;
+    -webkit-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
+    text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+}
+
+.form-wrapper button:hover{
+    background: #C94118;
+}
+
+.form-wrapper button:active,
+.form-wrapper button:focus{
+    background: #C94118;
+}
+
+.form-wrapper button:before {
+    content: '';
+    position: absolute;
+    border-width: 8px 8px 8px 0;
+    border-style: solid solid solid none;
+    border-color: transparent #F07400 transparent;
+    top: 12px;
+    left: -6px;
+}
+
+.form-wrapper button:hover:before{
+    border-right-color: #e54040;
+}
+
+.form-wrapper button:focus:before{
+    border-right-color: #C94118;
+}
+
+.form-wrapper button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
