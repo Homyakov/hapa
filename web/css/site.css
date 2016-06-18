@@ -11,7 +11,7 @@ body {
 
 a.title {
     display: inline-block;
-    line-height: 22px;
+    line-height: 30px;
     color: #F5EDD3;
 }
 a.title:hover{
@@ -260,7 +260,7 @@ text-align: left;
 /*стили строки поиска */
 
 
-/*-------------------------------------*/
+
 
 .cf:before, .cf:after{
     content:"";
@@ -275,7 +275,6 @@ text-align: left;
     zoom:1;
 }
 
-/*-------------------------------------*/
 
 .form-wrapper {
     width: 550px;
@@ -382,3 +381,32 @@ text-align: left;
     border: 0;
     padding: 0;
 }
+
+/** Кнопка возврвта в начало **/
+.toplink {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    padding: 5px 8px 0 5px;
+    border: solid 1px #ddd;
+    border-radius: 5px;
+    background-color: #ccc;
+    color: #46b8da;
+    opacity: 0.2;
+}
+/** ********************* **/
+
+/** Стиль кнопки выбора файлов в аккаунте **/
+.uploder-img{
+    font: inherit;
+    border: 1px solid #9D9D9D;
+    border-radius: 4px;
+    padding:7px;
+    color: #000;
+    margin-top: 5px;
+    font-size: 14px;
+    background-color: #9D9D9D;
+    overflow: hidden;
+
+}
+/** ********************* **/

@@ -3,9 +3,11 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 use yii\widgets\ActiveForm;
+use yii\widgets\Pjax;
 
 $this->title = 'Articles';
 ?>
+<?php Pjax::begin(); ?>
 <?php $form = ActiveForm::begin();  ?>
 <div class="form-wrapper cf">
    <input name="search" type="text" placeholder="Введите здесь слово, которое нужно найти..." required>
@@ -41,4 +43,9 @@ $this->title = 'Articles';
 <?php  endforeach;  ?>
 </div>
 
+    <div class="toplink">
+        <a href="#" class="h1" title="К началу"><span class="glyphicon glyphicon-arrow-up"></span></a>
+    </div>
+
 <?= LinkPager::widget(['pagination'=>$pagination]) ?>
+<?php Pjax::end(); ?>

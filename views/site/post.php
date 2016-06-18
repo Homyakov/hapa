@@ -11,6 +11,9 @@ use yii\helpers\Url;
 
 $this->title = $lessons->title ;
 ?>
+<div class="toplink">
+    <a href="#" class="h1" title="К началу"><span class="glyphicon glyphicon-arrow-up"></span></a>
+</div>
 
 <div id="templatemo_main">
     <div id="content">
@@ -98,6 +101,9 @@ $this->title = $lessons->title ;
             <?php  $form = ActiveForm::end(); ?>
             <?php Pjax::end(); ?>
         </div>
+
+
+
     </div>
 
 

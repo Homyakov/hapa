@@ -19,7 +19,7 @@ use yii\bootstrap\ActiveForm;
     </div>
     <div class="account-info ">
 
-        <?= $form->field($account_change,'imageFile')->fileInput()->label('Аватар') ?>
+        <?= $form->field($account_change,'imageFile')->fileInput(['class'=>'uploder-img'])->label('Аватар') ?>
         <?= $form->field($account_change,'login')->textInput(['value'=>Yii::$app->user->identity->login])->label('Логин') ?>
         <?= $form->field($account_change,'email')->textInput(['value'=>Yii::$app->user->identity->email])->label('Email') ?>
         <?= $form->field($account_change,'name')->textInput(['value'=>Yii::$app->user->identity->name])->label('Имя') ?>

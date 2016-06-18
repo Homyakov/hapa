@@ -16,9 +16,9 @@ use yii\bootstrap\ActiveForm;
         <div class="account-info">
              <div>Ваш логин: <? echo $info_account->login; ?></div>
              <div>Ваш email: <? echo $info_account->email; ?></div>
-             <div>Ф.И.О. : <? echo $info_account->name.' '.$info_account->lastname.' '.$info_account->fathername;; ?></div>
-             <div>День рождения: <? echo $info_account->date; ?></div>
-             <div>О себе: <? echo $info_account->aboutme; ?></div>
+            <? if($info_account->name!=NULL && $info_account->name!=NULL && $info_account->name!=NULL )  {echo "<div>Ф.И.О. : ".$info_account->name.' '.$info_account->lastname.' '.$info_account->fathername."</div>"; }?>
+            <? if($info_account->date!=NULL) { echo "<div>День рождения: ". $info_account->date."</div>";} ?>
+            <? if($info_account->aboutme!=NULL) {echo "<div>О себе: ".  $info_account->aboutme."</div>";} ?>
 
 
 
