@@ -226,6 +226,12 @@ a.desc:after {
 
    overflow: hidden;
 }
+
+div.account-img img {
+    width: 100px;
+    height: 100px;
+}
+
 .account-info{
 border: 1px solid #cccccc;
 text-align: left;
@@ -242,6 +248,7 @@ text-align: left;
     padding-left: 110px;
     font-size: 21px;
     margin-top: 20px;
+    margin-bottom: 15px;
 }
 .account-profile{
     text-align: center;
@@ -410,3 +417,4 @@ text-align: left;
 
 }
 /** ********************* **/
+

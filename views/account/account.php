@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\bootstrap\Alert;
 ?>
 
 <?php $this->title = 'Account'; ?>
@@ -28,6 +29,14 @@ use yii\bootstrap\ActiveForm;
         <?php $form = ActiveForm::begin(['action'=>'change']); ?>
 
         <div class="account-button"><?= Html::submitButton('Изменить информацию о себе', ['class' => 'btn btn-success', 'name' => 'account-button']) ?></div>
-        <?php ActiveForm::end(); ?>
+        <?php ActiveForm::end();?>
+
+            <?= Alert::widget([
+    'options' => [
+        'class' => 'alert-success'
+    ],
+    'body' => Yii::$app->session->get('success')
+]); ?>
+
 
     </div>

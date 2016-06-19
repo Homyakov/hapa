@@ -9,10 +9,12 @@ $this->title = 'Articles';
 ?>
 <?php Pjax::begin(); ?>
 <?php $form = ActiveForm::begin();  ?>
+
 <div class="form-wrapper cf">
    <input name="search" type="text" placeholder="Введите здесь слово, которое нужно найти..." required>
    <button type="submit">Искать</button>
 </div>
+
 <?php  $form = ActiveForm::end(); ?>
 
 

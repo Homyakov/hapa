@@ -14,7 +14,7 @@ use yii\bootstrap\ActiveForm;
     <br>
     <?php $form = ActiveForm::begin(['action'=>'save','options'=>['enctype'=>'multipart/form-data']]); ?>
     <div class="account-img">
-        <img src="../images/avator.png">
+        <img src="<?=Yii::$app->user->identity->imageFile?>">
 
     </div>
     <div class="account-info ">

@@ -88,6 +88,8 @@ class AccountController extends Controller
             $account_change->imageFile = UploadedFile::getInstance($account_change,'imageFile');
 
             if ($account_change->validate() && $account_change->save_account()) {
+                Yii::$app->session->set("success",'Ваши данные успешно сохранены!');
+
                 return $this->redirect(['index']);
             }
             return $this->redirect(['change']);
