@@ -77,9 +77,10 @@ class SiteController extends Controller
 
     public function actionArticles()
     {
+
       if ( Yii::$app->request->post('search')){
           $otvet = Yii::$app->request->post('search');
-          $lessons =Lessons::find()
+          $lessons = Lessons::find()
               ->where(['like', 'text', $otvet])
               ->all();
           return $this->render('search',[

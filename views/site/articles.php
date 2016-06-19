@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 
 $this->title = 'Articles';
 ?>
-<?php Pjax::begin(); ?>
+
 <?php $form = ActiveForm::begin();  ?>
 
 <div class="form-wrapper cf">
@@ -50,4 +50,4 @@ $this->title = 'Articles';
     </div>
 
 <?= LinkPager::widget(['pagination'=>$pagination]) ?>
-<?php Pjax::end(); ?>
+
