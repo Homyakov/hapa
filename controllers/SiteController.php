@@ -74,7 +74,7 @@ class SiteController extends Controller
             'pagination'=>$pagination,
         ]);
     }
-f
+
     public function actionArticles()
     {
       if ( Yii::$app->request->post('search')){
