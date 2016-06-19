@@ -65,7 +65,7 @@ $this->title = $lessons->title ;
                                                 ],
                                                 [
                                                     'label' => 'Профиль',
-                                                    'url' => Url::to(['site/profil','login'=> $comment->author])
+                                                    'url' => Url::to(['friend/profil','login'=> $comment->author])
                                                 ],
 
                                             ]

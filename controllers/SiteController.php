@@ -1,20 +1,16 @@
 <?php
 
 namespace app\controllers;
-use app\models\AccountChange;
 use app\models\Categories;
 use app\models\Comment;
 use app\models\Comments;
-use app\models\Login;
 use app\models\User;
-use app\models\Signup;
 use yii\data\Pagination;
 use app\models\Lessons;
 use Yii;
-use yii\filters\AccessControl;
 use yii\web\Controller;
-use yii\filters\VerbFilter;
-use app\models\ContactForm;
+
+
 
 
 class SiteController extends Controller
@@ -150,17 +146,5 @@ class SiteController extends Controller
 
 
 
-    public function actionProfil(){
-        $request = Yii::$app->request;
-        $get = $request->get();
-        $info_account = User::findOne(['login' => $get['login'] ]);
-
-
-        return $this->render('profil', [
-            'info_account' => $info_account,
-        ]);
-    }
-
-
- 
+    
 }

@@ -16,7 +16,7 @@ $config = [
             'rules'=>[
                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                 '<controller:\w+>' => '<controller>/index',
-                ['class'=>'yii\rest\UrlRule','controller' => ['site','account','admin']],
+                ['class'=>'yii\rest\UrlRule','controller' => ['site','account','admin','friend']],
 
 
             ]
