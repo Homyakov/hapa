@@ -14,8 +14,11 @@ $config = [
             //убираем r = routers
             'enablePrettyUrl'=>true,
             'rules'=>[
-                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+               '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                 '<controller:\w+>' => '<controller>/index',
+                ['class'=>'yii\rest\UrlRule','controller' => ['site','account','admin']],
+
+
             ]
         ],
 
