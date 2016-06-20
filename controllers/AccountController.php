@@ -99,11 +99,11 @@ class AccountController extends Controller
     }
 
     public function actionIndex()
-    {
+        {
 
+        $info_account = User::findOne(['login'=>Yii::$app->user->identity->login]);
 
-
-        $comments = Comments::find()
+            $comments = Comments::find()
             ->where(['answer'=>Yii::$app->user->identity->login,
                 'viewed'=>1])
         ->all();
@@ -122,6 +122,7 @@ class AccountController extends Controller
 
 
         return $this->render('account', [
+            'info_account'=>$info_account,
             'comments' => $comments,
             'lessons_title' => $lessons_title,
         ]);
