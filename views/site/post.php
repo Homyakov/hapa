@@ -4,12 +4,13 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\widgets\Pjax;
+use yii\bootstrap\Alert;
 use yii\bootstrap\ButtonDropdown;
 use yii\helpers\Url;
 
 
 
-$this->title = $lessons->title ;
+$this->title = $lesson->title ;
 ?>
 <div class="toplink">
     <a href="#" class="h1" title="К началу"><span class="glyphicon glyphicon-arrow-up"></span></a>
@@ -19,15 +20,15 @@ $this->title = $lessons->title ;
     <div id="content">
         <div class="post">
 
-            <h2><?= $lessons->title ?></h2>
+            <h2><?= $lesson->title ?></h2>
             <div class="meta">
-                <span class="admin"><?= $lessons->author ?></span>
-                <span class="date"><?= $lessons->data ?></span>
-                <span class="comment"><?= $lessons->com ?></span>
-                <span class="view"><?= $lessons->view?></span>
+                <span class="admin"><?= $lesson->author ?></span>
+                <span class="date"><?= $lesson->data ?></span>
+                <span class="comment"><?= $lesson->com ?></span>
+                <span class="view"><?= $lesson->view?></span>
                 <div class="cleaner"></div>
             </div>
-            <p><?= $lessons->text ?></p>
+            <p><?= $lesson->text ?></p>
 
             <div class="cleaner"></div>
         </div>
@@ -61,7 +62,7 @@ $this->title = $lessons->title ;
                                             'items' => [
                                                 [
                                                     'label' => 'Ответить',
-                                                    'url' => '#'
+                                                    'url' => Url::to(['site/post','id'=> $_GET['id'],'answer'=> $comment->author,'com_id'=> $comment->id])
                                                 ],
                                                 [
                                                     'label' => 'Профиль',
@@ -84,10 +85,23 @@ $this->title = $lessons->title ;
                     <?php endforeach; ?>
             </div>
 
-            <h1>Добавить комментарий</h1>
-            <?php $form = ActiveForm::begin(['options' => ['data-pjax' => true]]);  ?>
+            <?
+            if(Yii::$app->session->has('info')) {
+                echo Alert::widget([
+                    'options' => [
+                        'class' => 'alert-info'
+                    ],
+                    'body' => Yii::$app->session->getFlash('info')
+                ]);
+            }
+            ?>
 
-            <?= $form->field($comment_model,'text')->textarea(['rows' => 8, 'cols' => 5])->label('Введите текст комментария') ?>
+            <h1>Добавить комментарий</h1>
+            <?php $form = ActiveForm::begin(['options' => ['data-pjax' => true]]);
+
+            ?>
+
+            <?= $form->field($comment_model,'text')->textarea(['rows' => 8, 'cols' => 5, 'value'=>$answer])->label('Введите текст комментария') ?>
             <?php
             if (Yii::$app->user->isGuest)
                 echo  "<p id='com_worn'>Для добавления комментариев необходимо авторизироваться </p>";
@@ -100,8 +114,8 @@ $this->title = $lessons->title ;
 
             <?php  $form = ActiveForm::end(); ?>
             <?php Pjax::end(); ?>
+            <a id="linc"></a>
         </div>
-
 
 
     </div>

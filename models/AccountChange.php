@@ -18,7 +18,7 @@ class AccountChange extends Model
     public $date;
     public $aboutme;
     public $imageFile;
-
+    public $answer;
 
 
 
@@ -32,10 +32,10 @@ class AccountChange extends Model
                 [['email','login'],'trim'],
                 [['email','login'],'filter', 'filter' => 'stripslashes', 'skipOnArray' => true],
                 [['email','login'],'filter', 'filter' => 'htmlspecialchars', 'skipOnArray' => true],
-            [['imageFile'],'file',/*'skipOnEmpty'=>false,*/'extensions'=>['png','jpg'],'maxSize'=>1024*6024]
+            [['imageFile'],'file',/*'skipOnEmpty'=>false,*/'extensions'=>['png','jpg'],'maxSize'=>1024*6024],
+
         ];
     }
-
 
 
 

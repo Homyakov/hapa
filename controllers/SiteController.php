@@ -107,9 +107,11 @@ class SiteController extends Controller
     public function actionPost()
     {
 
+
+
         $request = Yii::$app->request;
         $get = $request->get();
-        $lessons = Lessons::find()
+        $lesson = Lessons::find()
             ->select(['title','data','view','author','text','id','com'])
             ->where('id=:id',[':id'=>$get['id']])
             ->one();
@@ -119,28 +121,42 @@ class SiteController extends Controller
         if ( Yii::$app->request->post('Comment'))
         {
             if (!Yii::$app->user->isGuest) {
+                if(isset($get['answer']) && isset($get['com_id'])) {
+                    $comment_model->answer = Yii::$app->user->identity->login;
+
+                }
+
                 $comment_model->attributes = Yii::$app->request->post('Comment');
-                $comment_model->addComment();
-                $lessons->updateCounters(['com' => 1]);
-            }
-            else {
+                if ($comment_model->validate() && $comment_model->addComment()) {
+                    if (!empty($comment_model->answer)) {
+
+                        Yii::$app->session->setFlash("info",'Ваш ответ был успешно отправлен пользователю '.$get['answer']);
+                    }
+                    $lesson->updateCounters(['com' => 1]);
+                }
+            } else {
                 return $this->redirect(['account/login']);
             }
         }
 
-
         $comments = Comments::find()
-            ->select(['author','date','text'])
+            ->select(['author','date','text','id'])
             ->where('post=:id',[':id'=>$get['id']])
             ->all();
-        $lessons->updateCounters(['view' => 1]);
+
+        $lesson->updateCounters(['view' => 1]);
+
+
+        if(isset($get['answer']) && isset($get['com_id'])) {
+            $answer = $_GET['answer'].', ';
+        }
+
         return $this->render('post',[
-            'lessons'=>$lessons,
+            'lesson'=>$lesson,
             'comment_model'=>$comment_model,
             'comments'=>$comments,
+            'answer' => $answer
         ]);
-
-
 
     }
 

@@ -31,12 +31,18 @@ use yii\bootstrap\Alert;
         <div class="account-button"><?= Html::submitButton('Изменить информацию о себе', ['class' => 'btn btn-success', 'name' => 'account-button']) ?></div>
         <?php ActiveForm::end();?>
 
-            <?= Alert::widget([
-    'options' => [
-        'class' => 'alert-success'
-    ],
-    'body' => Yii::$app->session->get('success')
-]); ?>
+            <?
+            if(Yii::$app->session->has('success')) {
+                echo Alert::widget([
+                    'options' => [
+                        'class' => 'alert-success'
+                    ],
+                    'body' => Yii::$app->session->getFlash('success')
+                ]);
+            }
+            ?>
+
+
 
 
     </div>
