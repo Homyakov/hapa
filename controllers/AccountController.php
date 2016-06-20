@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 use app\models\AccountChange;
+use app\models\Lessons;
 use app\models\Login;
 use app\models\User;
 use app\models\Signup;
@@ -10,8 +11,9 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use app\models\Comments;
 
-;
+
 
 
 class AccountController extends Controller
@@ -88,7 +90,7 @@ class AccountController extends Controller
             $account_change->imageFile = UploadedFile::getInstance($account_change,'imageFile');
 
             if ($account_change->validate() && $account_change->save_account()) {
-                Yii::$app->session->set("success",'Ваши данные успешно сохранены!');
+                Yii::$app->session->setFlash("success",'Ваши данные успешно сохранены!');
 
                 return $this->redirect(['index']);
             }
@@ -99,18 +101,36 @@ class AccountController extends Controller
     public function actionIndex()
     {
 
-        $info_account = User::findOne(['login' => Yii::$app->user->identity->login]);
-        //var_dump($info_account->imagnFile);die;
+
+
+        $comments = Comments::find()
+            ->where(['answer'=>Yii::$app->user->identity->login,
+                'viewed'=>1])
+        ->all();
+        $posts=[];
+        foreach($comments as $key=>$val) {
+            $posts[] = $val->post;
+        }
+
+        $lessons_title = Lessons::find()
+            ->select(['title'])
+            ->where(['id'=> $posts])
+            ->all();
+
+
+
+
 
         return $this->render('account', [
-            'info_account' => $info_account,
+            'comments' => $comments,
+            'lessons_title' => $lessons_title,
         ]);
     }
 
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            return $this->redirect('../site/index');
         }
 
         $login_model = new Login();

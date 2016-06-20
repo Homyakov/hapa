@@ -16,14 +16,14 @@ class Comment extends Model
     public $author;
     public $date;
     public $post;
+    public $answer;
 
-    
-    
     public function rules()
     {
         return [
             [['text'],'filter', 'filter' => 'stripslashes', 'skipOnArray' => true],
             [['text'],'filter', 'filter' => 'htmlspecialchars', 'skipOnArray' => true],
+            ['answer', 'match', 'pattern' => '/^[a-z]\w*$/i']
             ];
     }
 
@@ -34,8 +34,10 @@ class Comment extends Model
         $comment->author = Yii::$app->user->identity->login ;
         $comment->date = date('Y-m-d');
         $comment->post = Yii::$app->request->get('id');
- 
+        $comment->answer = $this->answer;
 
         return $comment->save();
     }
+
+
 }
