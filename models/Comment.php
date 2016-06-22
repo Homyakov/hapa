@@ -9,6 +9,7 @@
 namespace app\models;
 use yii\base\Model;
 use Yii;
+use yii\db\Command;
 
 class Comment extends Model
 {
@@ -17,6 +18,7 @@ class Comment extends Model
     public $date;
     public $post;
     public $answer;
+    public $viewed;
 
     public function rules()
     {
@@ -35,9 +37,15 @@ class Comment extends Model
         $comment->date = date('Y-m-d');
         $comment->post = Yii::$app->request->get('id');
         $comment->answer = $this->answer;
+        $comment->viewed = $this->viewed;
 
         return $comment->save();
     }
 
-
+    public function addViewed()
+    {
+    $comment = Comments::findOne(['id'=>Yii::$app->request->get('com_id')]);
+        $comment->viewed = $this->viewed;
+       return $comment->save();
+    }
 }

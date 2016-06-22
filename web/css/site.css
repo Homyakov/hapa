@@ -241,7 +241,6 @@ text-align: left;
 }
 
 .account-button{
-
     clear:both;
     text-align: left;
 
@@ -249,6 +248,10 @@ text-align: left;
     font-size: 21px;
     margin-top: 20px;
     margin-bottom: 15px;
+
+}
+.alert-answer{
+    text-align: left;
 }
 .account-profile{
     text-align: center;

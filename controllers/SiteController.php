@@ -123,7 +123,7 @@ class SiteController extends Controller
             if (!Yii::$app->user->isGuest) {
                 if(isset($get['answer']) && isset($get['com_id'])) {
                     $comment_model->answer = Yii::$app->user->identity->login;
-
+                    $comment_model->viewed = 1;
                 }
 
                 $comment_model->attributes = Yii::$app->request->post('Comment');
@@ -159,6 +159,27 @@ class SiteController extends Controller
         ]);
 
     }
+
+    public function actionAnswer()
+    {
+        $request = Yii::$app->request;
+        $get = $request->get();
+        $comment_model = new Comment();
+        if (!Yii::$app->user->isGuest) {
+            if(isset($get['id']) && isset($get['com_id'])) {
+                $comment_model->viewed = 0;
+            if ( $comment_model->addViewed()) {
+             return $this->redirect(['site/post', 'id'=>$get['id']]);
+            }
+            } else {
+                return $this->redirect(['account/index']);
+            }
+        } else {
+            return $this->redirect(['account/login']);
+        }
+    }
+
+
 
 
 

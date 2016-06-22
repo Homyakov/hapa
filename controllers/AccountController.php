@@ -101,19 +101,20 @@ class AccountController extends Controller
     public function actionIndex()
     {
 
-
+        $info_account = User::findOne(['login'=>Yii::$app->user->identity->login]);
 
         $comments = Comments::find()
             ->where(['answer'=>Yii::$app->user->identity->login,
                 'viewed'=>1])
         ->all();
+
         $posts=[];
         foreach($comments as $key=>$val) {
             $posts[] = $val->post;
         }
 
         $lessons_title = Lessons::find()
-            ->select(['title'])
+            ->select(['title','id'])
             ->where(['id'=> $posts])
             ->all();
 
@@ -122,6 +123,7 @@ class AccountController extends Controller
 
 
         return $this->render('account', [
+            'info_account' => $info_account,
             'comments' => $comments,
             'lessons_title' => $lessons_title,
         ]);
