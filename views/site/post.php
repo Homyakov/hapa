@@ -7,10 +7,15 @@ use yii\widgets\Pjax;
 use yii\bootstrap\Alert;
 use yii\bootstrap\ButtonDropdown;
 use yii\helpers\Url;
+use yii\widgets\LinkPager;
 
 
 
 $this->title = $lesson->title ;
+$this->params['breadcrumbs'][] = ['template' => "<li><a>{link}</a></li>",'url'=>Url::to(['site/articles']),'label'=>'Статьи',];
+$this->params['breadcrumbs'][] = ['template' => "<li><a>{link}</a></li>",'url'=>Url::to(['site/category','id'=>$category->id]),'label'=>$category->title];
+$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="toplink">
     <a href="#" class="h1" title="К началу"><span class="glyphicon glyphicon-arrow-up"></span></a>
@@ -34,19 +39,20 @@ $this->title = $lesson->title ;
         </div>
         <div>
 
-            <?php Pjax::begin(); ?>
+            <?php Pjax::begin(['enablePushState'=>false]); ?>
 
             <div id="comment_section">
 
 
                 <?php foreach ($comments as $comment): ?>
+
                 <ol class="comments first_level">
 
                     <li>
                         <div class="comment_box commentbox1">
-
+                            <a name="<?=$comment->id?>"></a>
                             <div class="gravatar">
-                                <img  src="../images/avator.png"  />
+                                <img  src="<?=$imageFile[$comment->author]?>"  />
                             </div>
 
                             <div class="comment_text">
@@ -62,7 +68,7 @@ $this->title = $lesson->title ;
                                             'items' => [
                                                 [
                                                     'label' => 'Ответить',
-                                                    'url' => Url::to(['site/post','id'=> $_GET['id'],'answer'=> $comment->author,'com_id'=> $comment->id])
+                                                    'url' => Url::to(['site/post','id'=> $_GET['id'],'answer'=> $comment->author,'#'=>'c'])
                                                 ],
                                                 [
                                                     'label' => 'Профиль',
@@ -85,8 +91,15 @@ $this->title = $lesson->title ;
                     <?php endforeach; ?>
             </div>
 
+            <?= LinkPager::widget([
+                'pagination'=>$pagination,
+                'maxButtonCount'=>5,
+                'hideOnSinglePage'=>true,
+                'pageCssClass'=>''
+            ]) ?>
+
             <?
-            if(Yii::$app->session->has('info')) {
+           if(Yii::$app->session->has('info')) {
                 echo Alert::widget([
                     'options' => [
                         'class' => 'alert-info'
@@ -94,8 +107,20 @@ $this->title = $lesson->title ;
                     'body' => Yii::$app->session->getFlash('info')
                 ]);
             }
+            if(Yii::$app->session->has('danger')) {
+                echo Alert::widget([
+                    'options' => [
+                        'class' => 'alert-danger'
+                    ],
+                    'body' => Yii::$app->session->getFlash('danger')
+                ]);
+            }
+
+
             ?>
 
+
+<a name="c"></a>
             <h1>Добавить комментарий</h1>
             <?php $form = ActiveForm::begin(['options' => ['data-pjax' => true]]);
 
@@ -109,7 +134,7 @@ $this->title = $lesson->title ;
             <div>
 
 
-                <?= Html::submitButton('добавить', ['class' => 'btn btn-lg btn-success']) ?>
+                <?= Html::submitButton('Добавить', ['class' => 'btn btn-lg btn-success']) ?>
             </div>
 
             <?php  $form = ActiveForm::end(); ?>

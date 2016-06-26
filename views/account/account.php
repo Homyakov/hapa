@@ -5,7 +5,11 @@ use yii\bootstrap\Alert;
 use yii\helpers\Url;
 ?>
 
-<?php $this->title = 'Account'; ?>
+<?php
+
+$this->title = 'Личный кабинет';
+$this->params['breadcrumbs'][] = $this->title;
+?>
 <h3>Личный кабинет</h3>
 
 
@@ -29,23 +33,52 @@ use yii\helpers\Url;
 
 
         </div>
-
+        <div>
+        <div class="account-button">
         <?php $form = ActiveForm::begin(['action'=>'change']); ?>
 
-        <div class="account-button"><?= Html::submitButton('Изменить информацию о себе', ['class' => 'btn btn-success', 'name' => 'account-button']) ?></div>
+        <?= Html::submitButton('Изменить информацию о себе', ['class' => 'btn btn-success', 'name' => 'account-button']) ?>
         <?php ActiveForm::end();?>
+        </div>
 
-            <?
-            if(Yii::$app->session->has('success')) {
-                echo Alert::widget([
-                    'options' => [
-                        'class' => 'alert-success'
-                    ],
-                    'body' => Yii::$app->session->getFlash('success')
-                ]);
+        <div class="collaps-answer"><?php
+
+            foreach($comments as $comment) {
+                foreach($lessons_title as $lesson_title) {
+                    if($lesson_title->id == $comment->post) {
+                        $comment->date = Yii::$app->formatter->asDate($comment->date);
+                        echo Alert::widget([
+                            'options' => [
+                                'class' => 'alert-info'
+                            ],
+                            'body' => "<div class='alert-answer'>Вам ответил пользователь $comment->author в статье: </div>".
+                                "<div class='alert-answer'>$comment->date</div>".
+                                "<div class='alert-answer'>$comment->text</div>".
+                                "<div><a href='/basic/web/site/answer?id=$comment->post&com_id=$comment->id#$comment->id' >$lesson_title->title</a> </div>"
+                        ]);
+                    }
+                }
             }
-            ?>
 
+
+
+
+
+
+        ?> </div></div>
+
+
+
+        <?
+        if(Yii::$app->session->has('success')) {
+            echo Alert::widget([
+                'options' => [
+                    'class' => 'alert-success'
+                ],
+                'body' => Yii::$app->session->getFlash('success')
+            ]);
+        }
+        ?>
 
 
 

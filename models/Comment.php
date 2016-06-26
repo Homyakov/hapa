@@ -9,6 +9,7 @@
 namespace app\models;
 use yii\base\Model;
 use Yii;
+use yii\db\Command;
 
 class Comment extends Model
 {
@@ -17,12 +18,14 @@ class Comment extends Model
     public $date;
     public $post;
     public $answer;
+    public $viewed=0;
 
     public function rules()
     {
         return [
             [['text'],'filter', 'filter' => 'stripslashes', 'skipOnArray' => true],
             [['text'],'filter', 'filter' => 'htmlspecialchars', 'skipOnArray' => true],
+            [ ['text'],'required','message'=>'Невозможно отправить пустое сообщение'],
             ['answer', 'match', 'pattern' => '/^[a-z]\w*$/i']
             ];
     }
@@ -35,9 +38,15 @@ class Comment extends Model
         $comment->date = date('Y-m-d');
         $comment->post = Yii::$app->request->get('id');
         $comment->answer = $this->answer;
+        $comment->viewed = $this->viewed;
 
         return $comment->save();
     }
 
-
+    public function addViewed()
+    {
+    $comment = Comments::findOne(['id'=>Yii::$app->request->get('com_id')]);
+        $comment->viewed = $this->viewed;
+       return $comment->save();
+    }
 }

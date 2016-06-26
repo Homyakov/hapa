@@ -45,9 +45,15 @@ margin-left:200px;
 }
 .comment_box .gravatar {
     float: left;
-    width: 75px;
     margin-right: 30px;
+    border-radius: 20px;
+    overflow: hidden;
 }
+div.gravatar img {
+    width: 75px;
+    height: 75px;
+}
+
 .comment_box .comment_text p {
     margin: 0;
 }
@@ -73,9 +79,9 @@ margin-left:200px;
 /* Блок стилей дарк про */
 .post {
     clear: left;
-    padding-bottom: 40px;
-    margin-bottom: 40px ;
-    background: url(../images/templatemo_divider.png) repeat-x bottom;
+    padding-bottom: 25px;
+    margin-bottom: 25px ;
+    background: url(images/templatemo_divider.png) repeat-x bottom;
 
 }
 .post .meta {
@@ -255,6 +261,10 @@ text-align: left;
     font-size: 21px;
     margin-top: 20px;
     margin-bottom: 15px;
+
+}
+.alert-answer{
+    text-align: left;
 }
 .account-profile{
     text-align: center;
@@ -424,12 +434,3 @@ text-align: left;
 }
 /** ********************* **/
 
-a.my_dialog{
-
-    color: #F5EDD3 ;
-    text-decoration: none;
-}
-
-.message_pole{
-    width: 600px;
-}

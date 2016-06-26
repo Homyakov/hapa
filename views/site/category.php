@@ -2,7 +2,10 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
+
 $this->title = $category->title;
+$this->params['breadcrumbs'][] = ['template' => "<li><a>{link}</a></li>",'url'=>Url::to(['site/articles']),'label'=>'Статьи',];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
     <h1 style="text-align: center;">Статьи по категории-<?= $category->title ?></h1>
     <div class="lesson">
