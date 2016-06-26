@@ -123,4 +123,17 @@ class AdminController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    public function actionDelcom($com_id)
+    {
+        $request = Yii::$app->request;
+        $get = $request->get();
+        if (($model = Comments::findOne($com_id)) !== null) {
+            $model->delete();
+            return $this->redirect(['site/post','id'=>$get['id']]);
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+
+    }
 }

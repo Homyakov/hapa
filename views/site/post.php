@@ -49,6 +49,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <ol class="comments first_level">
 
                     <li>
+                        <?php if(Yii::$app->user->identity->login==="admin")
+                            printf( "<div><a href='%s' title='Delete' aria-label='Delete' data-confirm='Вы уверены что хотите удалить этот комментарий?' data-method='post' data-pjax='0'><span class='glyphicon glyphicon-trash'></span></a></div>",Url::to(['admin/delcom','com_id'=>$comment->id,'id'=>$_GET['id']]) )
+                        ?>
                         <div class="comment_box commentbox1">
                             <a name="<?=$comment->id?>"></a>
                             <div class="gravatar">
