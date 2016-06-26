@@ -18,7 +18,7 @@ $this->title = 'Сообщения';
             <div class="comment_box commentbox1">
 
                 <div class="gravatar">
-                    <img  src="../images/avator.png"  />
+                    <img  src="<?=$imageFile['$message->ot_kovo'] ?>"  />
                 </div>
 
                 <div class="comment_text">
@@ -41,7 +41,7 @@ $this->title = 'Сообщения';
             <div class="comment_box commentbox1">
 
                 <div class="gravatar">
-                    <img  src="../images/avator.png"  />
+                    <img  src="<?=$imageFile['$message->ot_kovo'] ?>"  />
                 </div>
 
                 <div class="comment_text">

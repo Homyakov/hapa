@@ -179,9 +179,15 @@ class AccountController extends Controller
                 ->offset($pagination->offset)
                 ->limit($pagination->limit)
                 ->all();
-        
 
-           
+
+            $imges_profil = User::find()
+                ->select(['imageFile','login'])
+                ->all();
+            $imageFile = [];
+            foreach ($imges_profil as $key => $img_profil ) {
+                $imageFile[$img_profil->login] =  $img_profil->imageFile;
+            }
             
 
             $message = Message::find()
@@ -199,6 +205,7 @@ class AccountController extends Controller
                 'dialogs' => $dialogs,
                 'pagination'=>$pagination,
                 'message'=>$message,
+                'imageFile'=>$imageFile,
 
             ]);
 
@@ -246,11 +253,20 @@ class AccountController extends Controller
             ->orderBy('date')
             ->orderBy('time')
             ->all();
+        
+        $imges_profil = User::find()
+            ->select(['imageFile','login'])
+            ->all();
+        $imageFile = [];
+        foreach ($imges_profil as $key => $img_profil ) {
+            $imageFile[$img_profil->login] =  $img_profil->imageFile;
+        }
 
         return $this->render('message',[
             'messages'=>$messages,
             'info_account' => $info_account,
             'model_message'=>$model_message,
+            'imageFile'=>$imageFile,
         ]);
 
     }

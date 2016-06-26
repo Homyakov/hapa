@@ -17,12 +17,11 @@ $this->title = 'Диалоги';
 
     <?php  if ($dialog->pol1==Yii::$app->user->identity->login){ ?>
         <a href="<?php echo Url::to(['account/message', 'login' => $dialog->pol2 ]);  ?>"  class="my_dialog" > <div class="comments first_level" >
-
                 <li>
                     <div class="comment_box commentbox1">
 
                         <div class="gravatar">
-                            <img  src=""  />
+                            <img  src="<?=$imageFile['$dialog->pol2'] ?>"  />
                         </div>
 
                         <div class="comment_text">
@@ -67,7 +66,7 @@ $this->title = 'Диалоги';
                 <div class="comment_box commentbox1">
 
                     <div class="gravatar">
-                        <img  src="../images/avator.png"  />
+                        <img  src="<?=$imageFile['$dialog->pol1'] ?>"  />
                     </div>
 
                     <div class="comment_text">
