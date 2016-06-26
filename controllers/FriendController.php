@@ -3,6 +3,7 @@
 
 namespace app\controllers;
 
+
 use app\models\MessageForm;
 use Yii;
 use yii\web\Controller;
@@ -32,7 +33,19 @@ class FriendController extends Controller
 
         if (Yii::$app->request->post('MessageForm')){
             $model_message->attributes = Yii::$app->request->post('MessageForm');
-            $model_message->addMessage();
+           
+
+            $found = $model_message->found_dialog();
+            if ($found){
+                $model_message->updateDate();
+                $model_message->addMessage();
+            }
+            else {
+                $model_message->addDialog();
+                $model_message->addMessage();
+            }
+
+
         }
 
         return $this->render('profil', [

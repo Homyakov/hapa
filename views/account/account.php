@@ -15,7 +15,7 @@ use yii\helpers\Url;
         <h4><?php echo "Добро пожаловать на сайт, ".Yii::$app->user->identity->login ?></h4>
         <br>
         <div style="padding-top: 10px; padding-bottom:5px;">
-            <a class="btn btn-default" href="<?php echo Url::to(['account/signup']);  ?>">Сообщения</a>
+            <a class="btn btn-default" href="<?php echo Url::to(['account/dialog']);  ?>">Сообщения</a>
         </div>
         <div class="account-img"><img src="<? echo $info_account->imageFile; ?>" width="100" height="100"></div>
         <div class="account-info">

@@ -2,8 +2,10 @@
 
 namespace app\controllers;
 use app\models\AccountChange;
+use app\models\Dialogs;
 use app\models\Lessons;
 use app\models\Login;
+use app\models\Message;
 use app\models\User;
 use app\models\Signup;
 use Yii;
@@ -12,6 +14,8 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 use app\models\Comments;
+use yii\data\Pagination;
+use app\models\MessageForm;
 
 
 
@@ -117,10 +121,6 @@ class AccountController extends Controller
             ->where(['id'=> $posts])
             ->all();
 
-
-
-
-
         return $this->render('account', [
             'info_account'=>$info_account,
             'comments' => $comments,
@@ -156,6 +156,107 @@ class AccountController extends Controller
             return $this->redirect('../site/index');
         }
     }
+
+    public function actionDialog(){
+        if(!Yii::$app->user->isGuest) {
+
+            $query = Dialogs::find();
+
+            $login = Yii::$app->user->identity->login;
+
+            $pagination = new Pagination([
+                'defaultPageSize'=>8,
+                'totalCount'=>$query->count(),
+            ]);
+            $dialogs = $query->where(['or',
+                'pol1=:login',
+                'pol2=:login',
+            ])
+                ->addParams([':login' => $login])
+                ->orderBy('date DESC')
+                ->orderBy('time DESC')
+                ->offset($pagination->offset)
+                ->limit($pagination->limit)
+                ->all();
+        
+
+           
+            
+
+            $message = Message::find()
+                ->where(['or',
+                    'komy=:login',
+                    'ot_kovo=:login',
+                ])
+                ->addParams([':login' => $login])
+                ->orderBy('id DESC')
+                ->all();
+
+
+
+            return $this->render('dialogs', [
+                'dialogs' => $dialogs,
+                'pagination'=>$pagination,
+                'message'=>$message,
+
+            ]);
+
+        }
+
+        return $this->goHome();
+    }
+
+    public function actionMessage(){
+        $model_message = new MessageForm();
+        $request = Yii::$app->request;
+        $get = $request->get();
+        $info_account = User::findOne(['login' => $get['login'] ]);
+
+        if (Yii::$app->request->post('MessageForm')){
+            $model_message->attributes = Yii::$app->request->post('MessageForm');
+
+
+            $found = $model_message->found_dialog();
+            if ($found){
+                $model_message->updateDate();
+                $model_message->addMessage();
+            }
+            else {
+                $model_message->addDialog();
+                $model_message->addMessage();
+            }
+
+
+        }
+
+
+        $login = Yii::$app->request->get('login');
+        $messages = Message::find()
+            ->where(['or',
+                ['and',
+                'ot_kovo=:my_login',
+                'komy=:his_login'],
+                ['and',
+                 'ot_kovo=:his_login',
+                 'komy=:my_login']
+            ])
+            ->addParams([':my_login'=>Yii::$app->user->identity->login])
+            ->addParams([':his_login'=>$login])
+            ->orderBy('date')
+            ->orderBy('time')
+            ->all();
+
+        return $this->render('message',[
+            'messages'=>$messages,
+            'info_account' => $info_account,
+            'model_message'=>$model_message,
+        ]);
+
+    }
+
+
+
+
 
 
 }

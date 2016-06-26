@@ -25,11 +25,17 @@ a.title:hover{
     margin-bottom: 60px;
     width: 538px;
 }
+#dialog {
+margin-left:200px;
+}
 .comments {
     list-style: none;
 }
 .first_level {
     margin: 0; padding: 0;
+}
+.second_level{
+    margin-left: 300px; padding: 0px;
 }
 .comments li .comment_box {
     clear: both;
@@ -418,3 +424,12 @@ text-align: left;
 }
 /** ********************* **/
 
+a.my_dialog{
+
+    color: #F5EDD3 ;
+    text-decoration: none;
+}
+
+.message_pole{
+    width: 600px;
+}

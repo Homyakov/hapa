@@ -2,7 +2,7 @@
 
 
 namespace app\models;
-use Yii\db\ActiveRecord;
+use yii\db\ActiveRecord;
 
 class Message extends ActiveRecord
 {
