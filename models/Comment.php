@@ -18,13 +18,14 @@ class Comment extends Model
     public $date;
     public $post;
     public $answer;
-    public $viewed;
+    public $viewed=0;
 
     public function rules()
     {
         return [
             [['text'],'filter', 'filter' => 'stripslashes', 'skipOnArray' => true],
             [['text'],'filter', 'filter' => 'htmlspecialchars', 'skipOnArray' => true],
+            [ ['text'],'required','message'=>'Невозможно отправить пустое сообщение'],
             ['answer', 'match', 'pattern' => '/^[a-z]\w*$/i']
             ];
     }

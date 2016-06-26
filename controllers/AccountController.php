@@ -105,6 +105,7 @@ class AccountController extends Controller
             $comments = Comments::find()
             ->where(['answer'=>Yii::$app->user->identity->login,
                 'viewed'=>1])
+                ->orderBy('id DESC')
         ->all();
 
         $posts=[];

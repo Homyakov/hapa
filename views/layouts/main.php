@@ -8,6 +8,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -29,7 +30,7 @@ AppAsset::register($this);
     <?php
     NavBar::begin([
         'brandLabel' => 'ХАПА',
-        'brandUrl' => Yii::$app->homeUrl,
+        'brandUrl' => Url::to(['site/index']),
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
@@ -43,14 +44,15 @@ AppAsset::register($this);
             Yii::$app->user->identity->login !== 'admin' ? (
             ['label' => 'Личный кабинет', 'url' => ['account/index']]
             ) : (
-                '<li>'
+            ['label' => 'Админка', 'url' => ['admin/index']]
+                /*'<li>'
                 . Html::beginForm(['/admin/index'], 'post')
                 . Html::submitButton(
                     'Админка ',
                     ['class' => 'btn btn-link']
                 )
                 . Html::endForm()
-                . '</li>'
+                . '</li>'*/
             ),
 
             Yii::$app->user->isGuest ? (
@@ -74,6 +76,8 @@ AppAsset::register($this);
     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            'homeLink' => ['label' => 'Главная', 'url' =>'http://localhost/basic/web/site/index' ],
+
         ]) ?>
         <?= $content ?>
     </div>

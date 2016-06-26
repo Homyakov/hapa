@@ -2,30 +2,60 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
+use yii\widgets\ActiveForm;
+use yii\widgets\Pjax;
+
+$this->title = 'Поиск';
+$this->params['breadcrumbs'][] = ['template' => "<li><a href='http://localhost/basic/web/site/articles'>{link}</a></li>",'label'=>'Статьи',];
+$this->params['breadcrumbs'][] = $this->title;
+
 
 ?>
-    <h1 style="text-align: center;">Результаты поиска:</h1>
-    <div class="lesson">
-        <?php foreach ($lessons as $lesson): ?>
-            <div id="templatemo_main">
-                <div id="content">
-                    <div class="post">
 
-                        <h2><a href="<?php echo Url::to(['site/post', 'id' => $lesson->id ]);  ?>" class="title "><?= $lesson->title ?></a></h2>
-                        <div class="meta">
-                            <span class="admin"><?= $lesson->author ?></span>
-                            <span class="date"><?= $lesson->data ?></span>
-                            <span class="comment"><?= $lesson->com ?></span>
-                            <span class="view"><?= $lesson->view?></span>
-                            <div class="cleaner"></div>
-                        </div>
-                        <img src="<?='../'.$lesson->mini_img ?> " alt="Image 01" />
-                        <p><?= $lesson->description ?></p>
-                        <a href="<?php echo Url::to(['site/post', 'id' => $lesson->id ]);  ?>" class="more float_r">Читать</a>
+<?php $form = ActiveForm::begin(['action'=>'search','method'=>'get']);  ?>
+
+<div class="form-wrapper cf">
+    <input name="search" type="text" placeholder="Введите здесь слово, которое нужно найти..." required>
+    <button type="submit">Искать</button>
+</div>
+
+<?php  $form = ActiveForm::end(); ?>
+
+
+<div class="lesson">
+
+    <?php foreach ($lessons as $lesson): ?>
+        <div id="templatemo_main">
+
+            <div id="content">
+                <div class="post">
+
+                    <h2><a href="<?php echo Url::to(['site/post', 'id' => $lesson->id ]);  ?>" class="title "><?= $lesson->title ?></a></h2>
+                    <div class="meta">
+                        <span class="admin"><?= $lesson->author ?></span>
+                        <span class="date"><?= $lesson->data ?></span>
+                        <span class="comment"><?= $lesson->com ?></span>
+                        <span class="view"> <?=$lesson->view?></span>
                         <div class="cleaner"></div>
                     </div>
+                    <img src="<?='../'.$lesson->mini_img ?>" />
+
+                    <p><?= $lesson->description ?></p>
+                    <a href="<?php echo Url::to(['site/post', 'id' => $lesson->id ]);  ?>" class="more float_r">Читать</a>
+                    <div class="cleaner"></div>
                 </div>
             </div>
-        <?php  endforeach;  ?>
-    </div>
+        </div>
+    <?php  endforeach;  ?>
+</div>
+
+<div class="toplink">
+    <a href="#" class="h1" title="К началу"><span class="glyphicon glyphicon-arrow-up"></span></a>
+</div>
+
+<?= LinkPager::widget([
+    'pagination'=>$pagination,
+    'maxButtonCount'=>5,
+    'hideOnSinglePage'=>true,
+]) ?>
 

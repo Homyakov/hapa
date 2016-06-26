@@ -2,6 +2,9 @@
 <?php
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
+
+$this->title = 'Авторизация';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="col-lg-7">
 <?php $form = ActiveForm::begin();  ?>

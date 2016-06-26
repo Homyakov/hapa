@@ -5,10 +5,12 @@ use yii\widgets\LinkPager;
 use yii\widgets\ActiveForm;
 use yii\widgets\Pjax;
 
-$this->title = 'Articles';
+$this->title = 'Статьи';
+$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 
-<?php $form = ActiveForm::begin();  ?>
+<?php $form = ActiveForm::begin(['action'=>'search','method'=>'get']);  ?>
 
 <div class="form-wrapper cf">
    <input name="search" type="text" placeholder="Введите здесь слово, которое нужно найти..." required>
@@ -49,5 +51,9 @@ $this->title = 'Articles';
         <a href="#" class="h1" title="К началу"><span class="glyphicon glyphicon-arrow-up"></span></a>
     </div>
 
-<?= LinkPager::widget(['pagination'=>$pagination]) ?>
+<?= LinkPager::widget([
+    'pagination'=>$pagination,
+    'maxButtonCount'=>5,
+    'hideOnSinglePage'=>true,
+]) ?>
 

@@ -1,16 +1,28 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Url;
+use yii\widgets\Breadcrumbs;
 ?>
 
-<?php $this->title = 'Account'; ?>
+<?php
+
+
+
+$this->title = 'Изменение личной информации';
+$this->params['breadcrumbs'][] = ['template' => "<li><a href='http://localhost/basic/web/account/index'>{link}</a></li>",'label'=>'Личный кабинет',];
+$this->params['breadcrumbs'][] = $this->title;
+
+
+
+?>
 <h3>Личный кабинет</h3>
 
 
 <div class="account-profile">
 
 
-    <h4><?php echo "Добро пожаловать на сайт, ".Yii::$app->user->identity->login ?></h4>
+
     <br>
     <?php $form = ActiveForm::begin(['action'=>'save','options'=>['enctype'=>'multipart/form-data']]); ?>
     <div class="account-img">
@@ -25,8 +37,8 @@ use yii\bootstrap\ActiveForm;
         <?= $form->field($account_change,'name')->textInput(['value'=>Yii::$app->user->identity->name])->label('Имя') ?>
         <?= $form->field($account_change,'lastname')->textInput(['value'=>Yii::$app->user->identity->lastname])->label('Фамилия') ?>
         <?= $form->field($account_change,'fathername')->textInput(['value'=>Yii::$app->user->identity->fathername])->label('Отчество') ?>
-        <label>Дата вашего рождения<br>
-            <div><input  class="happy-day" name="date" type="date" value="<?=Yii::$app->user->identity->date ?>" size="100"></div>
+         <label for="InputDate">Дата вашего рождения<br>
+            <div><input  class="form-control"  id="InputDate" name="date" type="date" value="<?=Yii::$app->user->identity->date ?>" size="100"></div>
         </label><br>
         <?= $form->field($account_change,'aboutme')->textarea(['value'=>Yii::$app->user->identity->aboutme])->label('О себе') ?>
     </div>

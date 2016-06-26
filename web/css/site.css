@@ -39,9 +39,15 @@ a.title:hover{
 }
 .comment_box .gravatar {
     float: left;
-    width: 75px;
     margin-right: 30px;
+    border-radius: 20px;
+    overflow: hidden;
 }
+div.gravatar img {
+    width: 75px;
+    height: 75px;
+}
+
 .comment_box .comment_text p {
     margin: 0;
 }
@@ -67,9 +73,9 @@ a.title:hover{
 /* Блок стилей дарк про */
 .post {
     clear: left;
-    padding-bottom: 40px;
-    margin-bottom: 40px ;
-    background: url(../images/templatemo_divider.png) repeat-x bottom;
+    padding-bottom: 25px;
+    margin-bottom: 25px ;
+    background: url(images/templatemo_divider.png) repeat-x bottom;
 
 }
 .post .meta {
@@ -223,7 +229,6 @@ a.desc:after {
     float:left;
     margin:0px 7px 7px 0;
     border-radius: 20px;
-
    overflow: hidden;
 }
 
@@ -421,3 +426,6 @@ text-align: left;
 }
 /** ********************* **/
 
+div.alert-danger .close{
+    display: none;
+}

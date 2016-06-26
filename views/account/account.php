@@ -5,7 +5,11 @@ use yii\bootstrap\Alert;
 use yii\helpers\Url;
 ?>
 
-<?php $this->title = 'Account'; ?>
+<?php
+
+$this->title = 'Личный кабинет';
+$this->params['breadcrumbs'][] = $this->title;
+?>
 <h3>Личный кабинет</h3>
 
 
@@ -49,7 +53,8 @@ use yii\helpers\Url;
                             ],
                             'body' => "<div class='alert-answer'>Вам ответил пользователь $comment->author в статье: </div>".
                                 "<div class='alert-answer'>$comment->date</div>".
-                                "<div><a href='/basic/web/site/answer?id=$comment->post&com_id=$comment->id' >$lesson_title->title</a> </div>"
+                                "<div class='alert-answer'>$comment->text</div>".
+                                "<div><a href='/basic/web/site/answer?id=$comment->post&com_id=$comment->id#$comment->id' >$lesson_title->title</a> </div>"
                         ]);
                     }
                 }
