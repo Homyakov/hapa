@@ -58,9 +58,7 @@ $this->title = 'Сообщения';
         <?php } ?>
 
         <?php endforeach; ?>
-    <?= Html::a("Обновить", ['account/message','login' =>$info_account->login ], ['class' => 'hidden', 'id' => 'refreshButton']) ?>
-    <? ?>
-
+   
     <div class="message_pole">
         <?php
     $form = ActiveForm::begin(['options' => ['data-pjax' => true]]);
